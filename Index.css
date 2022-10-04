@@ -1,13 +1,13 @@
 body{
     margin: 0;
     display: flex;
-    background-color: yellow;
+    background-color: black;
     flex-direction: column;
 }
 .header{
     width : 100vw;
     height: 60px;
-    background-color: blue;
+    background-color: white;
     display: flex;
     flex-direction: row;
 }
@@ -20,7 +20,7 @@ body{
 
 }
 .players{
-    color: white;
+    color: black;
     display: flex;
     width: fit-content;
     height: fit-content;
@@ -42,7 +42,7 @@ body{
 }
 
 .row{
-    height: 14%;
+    height: 30%;
     width: 100%;
     display: flex;
 
@@ -50,13 +50,17 @@ body{
 }
 .box{
     height: 100%;
-    width: 14%;
-    background-color: green;
+    width: 30%;
+    background-color: white;
 
 }
 .Player1{
-    background-color: Blue;
+    background-image: url(https://th.bing.com/th/id/OIP.SFpjSZ6di6kj6PtpBxK1OwHaJt?pid=ImgDet&rs=1);
+    background-size: 50%;
+    border: 1px solid white
 }
 .Player2{
-    background-color: red;
+    background-image: url(https://th.bing.com/th/id/OIP.hq0qhc-ZmRWNE_j_lf6nDgHaIU?pid=ImgDet&rs=1);
+    background-size:50%;
+    border: 1px solid white
 }
