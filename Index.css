@@ -10,6 +10,8 @@ body{
     background-color: white;
     display: flex;
     flex-direction: row;
+    border-bottom: 5px solid orange;
+    font-family: 'Gemunu Libre', sans-serif;
 }
 .PlayerName{
     display: flex;
@@ -27,7 +29,7 @@ body{
 }
 .main{
     display: flex;
-    height : calc(100vh - 60px);
+    height : calc(100vh - 65px);
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -53,6 +55,8 @@ body{
     height: 100%;
     width: 30%;
     background-color: white;
+    border-radius: 10px;
+    border: 5px solid orange
 }
 .Player1{
     background-image: url(https://th.bing.com/th/id/OIP.SFpjSZ6di6kj6PtpBxK1OwHaJt?pid=ImgDet&rs=1);

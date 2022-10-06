@@ -14,21 +14,11 @@ let Player2 = ""
 let Player1Name = document.getElementsByClassName("players")[0]
 let Player2Name = document.getElementsByClassName("players")[1]
 getnames();
-while(Player2 == "" || Player1 == Player2 || Player1 == ""){
-    if (Player1 == ""){
-    Player1 = prompt("what is playing 1 name?").toUpperCase()
-    Player1Name.textContent = "Player 1: " + Player1
-}   if (Player2 == "" || Player1 == Player2){
-    Player2 = prompt("what is playing 2 name?").toUpperCase()
-    Player2Name.textContent = "Player 2: " + Player2
-}   if (Player1 == Player2){
-    alert("Please Use a different name")
-}
-}
 let turn = Player1;
 let container = document.getElementById("board");
 let PaintBoard = "";
 container.addEventListener("click", function(event){
+    console.log(turn)
     let Identifier = event.target.id;
     let Identifier2 = event.target;
     console.log(Identifier2)
@@ -47,10 +37,14 @@ container.addEventListener("click", function(event){
     diagonal2(row[0],column[0])
     topcheck(row[0],column[0])
     RightLeft(row[0],column[0])
+    if(Player2 == "AI"){
     ai();
+    }
     if(turn == Player1){
         if(WinStatus == false){
-        turn = Player2
+            if(Player2 != "AI"){
+                turn = Player2
+            }
     }
     } else {  
         if(WinStatus == false){
@@ -99,7 +93,7 @@ function diagonal1(row,column){
         i++;
     }
 
-    if(k.length >= 2){
+    if(k.length >= 2 && Player2){
         Winner();
     }
 }
@@ -152,15 +146,20 @@ function RightLeft(row,column){
 
     if(k.length >= 2){
         Winner();
-    } 
+    }
+    if(Player2 != "AI" || turn == Player1){
     RemainingSquares++;
+    }
+    if(RemainingSquares == 9 && WinStatus != true){
+        Tie();
+        }
 }
 creatediv();
 function Winner(){
    
     WinStatus = true;
 
-    alert(turn + " Has won the game lolG")
+    win()
 }
 let ClearButton = document.getElementById("clearResults");
 
@@ -184,20 +183,34 @@ function ai(){
     
     }
     let greatest = 0;
+    let placeGreat = 0;
     console.log(board)
     for(let RowInt = 1; RowInt <=3; RowInt++){
         for(let ColumnInt = 1; ColumnInt <=3; ColumnInt++){
             if(board[RowInt][ColumnInt] == 0){
                 Holder[`row${RowInt}column${ColumnInt}`] = diagonal1Ai(RowInt,ColumnInt)+diagonal2Ai(RowInt,ColumnInt)+topcheckAi(RowInt,ColumnInt)+RightLeftAi(RowInt,ColumnInt)
                 if(diagonal1Ai(RowInt,ColumnInt)+diagonal2Ai(RowInt,ColumnInt)+topcheckAi(RowInt,ColumnInt)+RightLeftAi(RowInt,ColumnInt)> greatest){
+                    if(board[2][2] == Player1 || board[2][2] == Player2){
                     greatest = diagonal1Ai(RowInt,ColumnInt)+diagonal2Ai(RowInt,ColumnInt)+topcheckAi(RowInt,ColumnInt)+RightLeftAi(RowInt,ColumnInt);
+                    placeGreat = [RowInt,ColumnInt]
+                    } else{
+                        placeGreat = [2,2]
+                    }
                 }
             }
         }
         
     }
-    console.log(Holder)
-    console.log(greatest)
+    PaintBoard = document.getElementById(`row${placeGreat[0]}box${placeGreat[1]}`)
+    PaintBoard.classList.add("Player2")
+    board[placeGreat[0]][placeGreat[1]] = Player2;
+    turn = Player2
+    diagonal1(placeGreat[0],placeGreat[1])
+    diagonal2(placeGreat[0],placeGreat[1])
+    topcheck(placeGreat[0],placeGreat[1])
+    RightLeft(placeGreat[0],placeGreat[1])
+    RemainingSquares++;
+    turn = Player1
 }
 function diagonal1Ai(row1,column1){
     let k = 0;
@@ -336,4 +349,70 @@ function getnames(){
     x.innerHTML = getNamesOverlay;
     let startpage = document.getElementsByTagName("body")[0]
     startpage.prepend(x)
+    // Start of Button
+    x = document.getElementsByClassName("startdiv")[0]
+    let input1 = document.getElementsByTagName('input')[0]
+    let submitButton = document.getElementsByTagName('button')[0]
+    let playertext = document.getElementsByClassName("PlayerText")[0]
+    let valueofInput = ""
+    function nameChange(){
+        valueofInput = input1.value;
+        if (Player1 == ""){
+        playertext.textContent = "Please enter Player 2's Name - If AI please type AI"
+        Player1 = valueofInput.toUpperCase();
+        Player1Name.textContent = "Player 1: " + Player1
+        console.log(Player1)
+        valueofInput = "";
+        input1.value = "";
+        turn = Player1;
+    }   else if (Player2 == "" || Player1 == Player2){
+        playertext.textContent = "Please enter Player 2's Name - If AI please type AI"
+        Player2 = valueofInput.toUpperCase();
+        Player2Name.textContent = "Player 2: " + Player2
+        console.log(Player2)
+        console.log(Player1)
+        valueofInput = "";
+        input1.value = "";
+        if (Player1 != Player2){
+            startpage.removeChild(x)
+        }
+    }   else if (Player1 == Player2){
+        playertext.textContent = "Please Use a different name for player 2"
+    }   
+    }
+    submitButton.addEventListener('click', nameChange)
+}   
+function win(){
+    let x = document.createElement("div")
+    x.classList.add("startdiv")
+    console.log(x)
+    let getNamesOverlay = 
+    `<div id = "getNames" style = "display: flex;background-color = white; align-items: center;position: absolute; flex-direction: column;justify-content: center;width: 100%; height: 100%"><div class = "upper">${turn} HAS ONE THE GAME!</div><div class = "lower"><div class = "PlayerText">Please Hit the button to clear board and reset game</div><button class = "submit" type = "submit" >Reset</button><div></div>`
+    x.innerHTML = getNamesOverlay;
+    let startpage = document.getElementsByTagName("body")[0]
+    startpage.prepend(x)
+    let submitButton = document.getElementsByTagName('button')[0]
+    let playertext = document.getElementsByClassName("PlayerText")[0]
+    function winner(){
+        clearboard();
+        startpage.removeChild(x)
+    }
+    submitButton.addEventListener('click', winner)
 }
+function Tie(){
+    let x = document.createElement("div")
+    x.classList.add("startdiv")
+    console.log(x)
+    let getNamesOverlay = 
+    `<div id = "getNames" style = "display: flex;background-color = white; align-items: center;position: absolute; flex-direction: column;justify-content: center;width: 100%; height: 100%"><div class = "upper">YOU HAVE TIED!</div><div class = "lower"><div class = "PlayerText">Please Hit the button to clear board and reset game</div><button class = "submit" type = "submit" >Reset</button><div></div>`
+    x.innerHTML = getNamesOverlay;
+    let startpage = document.getElementsByTagName("body")[0]
+    startpage.prepend(x)
+    let submitButton = document.getElementsByTagName('button')[0]
+    function Ties(){
+        clearboard();
+        startpage.removeChild(x)
+    }
+    submitButton.addEventListener('click', Ties)
+}
+
