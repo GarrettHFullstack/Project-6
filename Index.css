@@ -31,6 +31,7 @@ body{
     width: 100vw;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 #board{
     display: flex;
@@ -52,15 +53,83 @@ body{
     height: 100%;
     width: 30%;
     background-color: white;
-
 }
 .Player1{
     background-image: url(https://th.bing.com/th/id/OIP.SFpjSZ6di6kj6PtpBxK1OwHaJt?pid=ImgDet&rs=1);
     background-size: 50%;
-    border: 1px solid white
+    border: 1px solid white;
 }
 .Player2{
     background-image: url(https://th.bing.com/th/id/OIP.hq0qhc-ZmRWNE_j_lf6nDgHaIU?pid=ImgDet&rs=1);
     background-size:50%;
     border: 1px solid white
+}
+#clearResults{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 20px;
+    height: 40px;
+    width: 90px;
+    background-color: white;
+}
+button{
+    height: 30px;
+    width: 5%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.startInput{
+    height: 30px;
+    width: 5%;
+    display: flex;
+    position: relative;
+    margin: 10px
+}
+.startdiv{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position:absolute;
+    background-color: black;
+    opacity: 98%;
+}
+.lower{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.upper{
+    display: flex;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 10vh;
+    text-align: center;
+    background: -webkit-linear-gradient(grey, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.PlayerText{
+    font-family: 'Gemunu Libre', sans-serif;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    height: 20%;
+    justify-content: center;
+    background: -webkit-linear-gradient(grey, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2vh;
 }
