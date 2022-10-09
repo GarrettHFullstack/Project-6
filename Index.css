@@ -41,7 +41,6 @@ body{
     width: 77%;
     height: 77%;
     flex-direction: column;
-
     justify-content: space-between;
 }
 
@@ -49,7 +48,6 @@ body{
     height: 30%;
     width: 100%;
     display: flex;
-
     justify-content: space-between;
 }
 .box{
@@ -60,7 +58,7 @@ body{
     border: 5px solid orange
 }
 .Player1{
-    background-image: url(https://th.bing.com/th/id/OIP.SFpjSZ6di6kj6PtpBxK1OwHaJt?pid=ImgDet&rs=1);
+    background-image: url(https://media.istockphoto.com/photos/milk-splash-on-black-background-picture-id510486152?k=6&m=510486152&s=170667a&w=0&h=SkbvZU0YeTbY1SEKULL6qdxiEgpuy4Hh4LOJrjW5uqA=);
     background-size:cover;
     border: 5px solid white;
     background-position: center;
@@ -85,6 +83,7 @@ body{
     font-family: 'Gemunu Libre', sans-serif;
     border-radius: 10px;
     border:1px solid black;
+    text-align: center;
 }
 #clearResults:hover{
     background-color: orange;
@@ -96,7 +95,7 @@ body{
 }
 button{
     height: 30px;
-    width: 5%;
+    width: auto;
     display: flex;
     position: relative;
     align-items: center;
@@ -105,7 +104,7 @@ button{
 }
 .startInput{
     height: 30px;
-    width: 5%;
+    width: auto;
     display: flex;
     position: relative;
     margin: 10px
