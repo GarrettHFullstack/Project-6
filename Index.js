@@ -17,7 +17,9 @@ getnames();
 let turn = Player1;
 let container = document.getElementById("board");
 let PaintBoard = "";
+document.getElementsByClassName("players")[0].classList.add("playeractive")
 container.addEventListener("click", function(event){
+    document.getElementsByClassName("players")[1].classList.remove("playeractive")
     console.log(turn)
     let Identifier = event.target.id;
     let Identifier2 = event.target;
@@ -44,10 +46,13 @@ container.addEventListener("click", function(event){
         if(WinStatus == false){
             if(Player2 != "AI"){
                 turn = Player2
+                document.getElementsByClassName("players")[1].classList.add("playeractive")
+                document.getElementsByClassName("players")[0].classList.remove("playeractive")
             }
     }
     } else {  
         if(WinStatus == false){
+        document.getElementsByClassName("players")[0].classList.add("playeractive")
         turn = Player1 
         } 
     }
@@ -202,8 +207,11 @@ function ai(){
         
     }
     PaintBoard = document.getElementById(`row${placeGreat[0]}box${placeGreat[1]}`)
+    if(RemainingSquares != 9 && WinStatus != true){
     PaintBoard.classList.add("Player2")
+    
     board[placeGreat[0]][placeGreat[1]] = Player2;
+    
     turn = Player2
     diagonal1(placeGreat[0],placeGreat[1])
     diagonal2(placeGreat[0],placeGreat[1])
@@ -211,6 +219,7 @@ function ai(){
     RightLeft(placeGreat[0],placeGreat[1])
     RemainingSquares++;
     turn = Player1
+    }
 }
 function diagonal1Ai(row1,column1){
     let k = 0;
@@ -392,7 +401,6 @@ function win(){
     let startpage = document.getElementsByTagName("body")[0]
     startpage.prepend(x)
     let submitButton = document.getElementsByTagName('button')[0]
-    let playertext = document.getElementsByClassName("PlayerText")[0]
     function winner(){
         clearboard();
         startpage.removeChild(x)

@@ -25,6 +25,7 @@ body{
     color: black;
     display: flex;
     width: fit-content;
+    font-size: 1vw;
     height: fit-content;
 }
 .main{
@@ -60,23 +61,38 @@ body{
 }
 .Player1{
     background-image: url(https://th.bing.com/th/id/OIP.SFpjSZ6di6kj6PtpBxK1OwHaJt?pid=ImgDet&rs=1);
-    background-size: 50%;
-    border: 1px solid white;
+    background-size:cover;
+    border: 5px solid white;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .Player2{
     background-image: url(https://th.bing.com/th/id/OIP.hq0qhc-ZmRWNE_j_lf6nDgHaIU?pid=ImgDet&rs=1);
-    background-size:50%;
-    border: 1px solid white
+    background-size:cover;
+    border: 5px solid white;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #clearResults{
     display: flex;
     justify-content: center;
     align-items: center;
     color: black;
-    margin: 20px;
+    margin: 40px;
     height: 40px;
-    width: 90px;
+    width: 10%;
     background-color: white;
+    font-family: 'Gemunu Libre', sans-serif;
+    border-radius: 10px;
+    border:1px solid black;
+}
+#clearResults:hover{
+    background-color: orange;
+    border:1px solid white;
+}
+.box:hover{
+    background-color: orange;
+    border: white 5px solid
 }
 button{
     height: 30px;
@@ -136,4 +152,10 @@ button{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2vh;
+}
+.playeractive{
+    color: orange;
+    border: 1px solid orange;
+    padding: 10px;
+    border-radius: 10px;
 }
