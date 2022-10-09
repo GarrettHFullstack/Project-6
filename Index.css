@@ -151,6 +151,7 @@ button{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2vh;
+    text-align: center;
 }
 .playeractive{
     color: orange;
