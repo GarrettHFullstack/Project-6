@@ -396,7 +396,7 @@ function win(){
     x.classList.add("startdiv")
     console.log(x)
     let getNamesOverlay = 
-    `<div id = "getNames" style = "display: flex;background-color = white; align-items: center;position: absolute; flex-direction: column;justify-content: center;width: 100%; height: 100%"><div class = "upper">${turn} HAS ONE THE GAME!</div><div class = "lower"><div class = "PlayerText">Please Hit the button to clear board and reset game</div><button class = "submit" type = "submit" >Reset</button><div></div>`
+    `<div id = "getNames" style = "display: flex;background-color = white; align-items: center;position: absolute; flex-direction: column;justify-content: center;width: 100%; height: 100%"><div class = "upper">${turn} HAS WON THE GAME!</div><div class = "lower"><div class = "PlayerText">Please Hit the button to clear board and reset game</div><button class = "submit" type = "submit" >Reset</button><div></div>`
     x.innerHTML = getNamesOverlay;
     let startpage = document.getElementsByTagName("body")[0]
     startpage.prepend(x)
